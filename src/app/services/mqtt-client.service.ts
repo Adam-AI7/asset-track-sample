@@ -93,7 +93,8 @@ export class MqttClientService {
           let payload  = asset[counts];
           this.publishFunciton(flighI,payload);
         }else this.doUnsubscribeToPublishForAssets();
-      })
+      },err=>console.log(err,echFlight.flightId)
+      )
     })
       }
       doUnsubscribeToPublishForAssets(){
