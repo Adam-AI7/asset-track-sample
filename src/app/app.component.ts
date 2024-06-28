@@ -7,7 +7,7 @@ export type latng= {"lat": number, "lng":number, "speed": number}
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
 })
 export class AppComponent implements OnInit,OnDestroy{
   @ViewChild('mapComponent')mapComponent!:MapComponent;

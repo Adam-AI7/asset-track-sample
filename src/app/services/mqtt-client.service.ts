@@ -1,6 +1,7 @@
 import { Inject, Injectable } from '@angular/core';
 import { Subscription, interval } from 'rxjs';
 import {
+  IMqttClient,
   IMqttMessage,
   IMqttServiceOptions,
   IPublishOptions,
@@ -15,11 +16,11 @@ import { MQTT_SERVICE_OPTIONS } from '../app.module';
 export class MqttClientService {
   curSubscription$!: Subscription;
   client!: MqttService;
-  connection = {
-    hostname: 'localhost',
-    port: 9001,
-    path: '/mqtt',
-  };
+  // connection = {
+  //   hostname: 'localhost',
+  //   port: 9001,
+  //   path: '/mqtt',
+  // };
   qosList = [
     { label: 0, value: 0 },
     { label: 1, value: 1 },
@@ -29,6 +30,15 @@ export class MqttClientService {
 
   constructor( private _mqttService: MqttService,private flightService:FlightsService) {
     this.client = this._mqttService;
+    this.client.state.subscribe(sta=>{
+      if(sta<2){
+        this.isConnection = false;
+      }else this.isConnection = true;
+      console.log(sta,'stateaachaaskdfkjlkhafsdkljkjasdshh,h,',this.client);
+      
+    })
+ 
+   
   }
 
   createConnection() {
@@ -60,6 +70,7 @@ export class MqttClientService {
 
   doPublish(publishOptions: {topic:string,qos:number,payload:string}) {
     const { topic, qos,payload } = publishOptions;
+    if(this.isConnection)
     this.client?.unsafePublish(topic, payload, { qos } as IPublishOptions);
   }
 

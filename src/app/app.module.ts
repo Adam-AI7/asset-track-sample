@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { MapComponent } from './map/map.component';
 import { ButtonModule } from 'primeng/button';
 
-import { IMqttServiceOptions, MqttModule } from 'ngx-mqtt';
+import { IMqttServiceOptions, MqttModule,IMqttClient } from 'ngx-mqtt';
 import { MqttClientService } from './services/mqtt-client.service';
 import { ToolbarModule } from 'primeng/toolbar';
 import { AvatarModule } from 'primeng/avatar';
@@ -30,6 +30,7 @@ export const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
     MqttModule.forRoot(MQTT_SERVICE_OPTIONS),
   ],
   providers: [
+    
     MqttClientService,
     { provide: ErrorHandler, useClass: GlobalErrorHandle },
     {
