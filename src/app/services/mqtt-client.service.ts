@@ -30,13 +30,13 @@ export class MqttClientService {
 
   constructor( private _mqttService: MqttService,private flightService:FlightsService) {
     this.client = this._mqttService;
-    this.client.state.subscribe(sta=>{
-      if(sta<2){
-        this.isConnection = false;
-      }else this.isConnection = true;
-      console.log(sta,'stateaachaaskdfkjlkhafsdkljkjasdshh,h,',this.client);
+    // this.client.state.subscribe(sta=>{
+    //   if(sta<2){
+    //     this.isConnection = false;
+    //   }else this.isConnection = true;
+    //   console.log(sta,'stateaachaaskdfkjlkhafsdkljkjasdshh,h,',this.client);
       
-    })
+    // })
  
    
   }

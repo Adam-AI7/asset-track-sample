@@ -57,7 +57,7 @@ updateCard(event:selectedFlightStatus){
     console.log('ondestroy',this.subscriptionArray,this.allSubs);
     
   }
-  ngOnInit(): void {
+  ngOnInit(): void { 
     // this.mqtt.createConnection();
     // this.mqtt.doSubscribe();
     // this.mqtt.doPublish();
